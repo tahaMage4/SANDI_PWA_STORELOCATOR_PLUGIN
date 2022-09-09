@@ -1,0 +1,291 @@
+:root {
+  --popup-text-color: #fff;
+}
+
+body {
+  counter-reset: list;
+}
+
+.StoreLocatorMap {
+  display: flex;
+
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  & .sidebar_left {
+    width: 360px;
+    margin-right: 50px;
+    flex-shrink: 0;
+
+    & .sidebar_scroll {
+      width: 100%;
+      height: 232px;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+
+  .shop-list {
+    display: block;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    height: 220px;
+  }
+
+  .stores__list {
+    margin-top: 11px;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+  }
+
+  .shop-list__shop {
+    counter-increment: list;
+    border-radius: 2px;
+    border-bottom: 1px solid transparent;
+    position: relative;
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    cursor: pointer;
+    display: flex;
+    padding: 1rem !important;
+    background-color: #fbfbfb;
+
+    &::before {
+      content: "0" counter(list) ".";
+      font-family: "Source Sans Pro", sans-serif;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 15px;
+      line-height: 18px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-feature-settings: "pnum" on, "lnum" on;
+      color: #000;
+      width: 44px;
+      flex-shrink: 0;
+      position: relative;
+      padding-right: 0;
+    }
+  }
+
+  .shop-list__title {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: bold;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: "pnum" on, "lnum" on;
+  }
+
+  .shop-list__text {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 15px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-feature-settings: "pnum" on, "lnum" on;
+    color: red;
+  }
+
+  //map style
+  .stores__right {
+    flex-grow: 1;
+    position: relative;
+    height: 432px; //for height negative break
+    overflow: hidden; // for aniamted & hidden the drawer
+
+    @include mobile {
+      margin-top: 0px !important;
+      margin-bottom: 10px;
+
+      .leaflet-container {
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 0;
+        position: relative;
+      }
+    }
+
+    .leaflet-container {
+      width: 50vw;
+      height: 100%;
+      z-index: 0;
+      position: relative;
+      max-width: 950px;
+      min-width: 950px;
+    }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+      background: none;
+      box-shadow: none;
+    }
+
+    .leaflet-popup-content {
+      margin: 13px 24px 13px 20px;
+      line-height: 1.3;
+      min-height: 1px;
+      width: 220px;
+    }
+
+    .leaflet-left {
+      left: 878px;
+    }
+
+    .leaflet-top {
+      top: 342px;
+      padding: 15px;
+    }
+
+    .store-tooltip.stores__tooltip.is-active {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      background-color: black;
+      color: white;
+      position: absolute;
+      left: -220px;
+      top: 0;
+      bottom: 0;
+      z-index: 1;
+      transition: left 0.5s ease;
+
+      @include mobile {
+        width: 150px;
+      }
+    }
+
+    .stores__tooltip {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 220px;
+      z-index: 10;
+    }
+
+    .store-tooltip {
+      display: none;
+      color: var(--popup-text-color);
+      box-sizing: border-box;
+      border-radius: 2px;
+
+      &::after {
+        content: "";
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 9px 10px 9px 0;
+        border-color: transparent #000 transparent transparent;
+        position: absolute;
+        right: 100%;
+        bottom: 184px;
+      }
+    }
+
+    .store-tooltip__content {
+      margin-top: 100px;
+      padding: 10px;
+      color: var(--popup-text-color);
+
+      .store-tooltip__title {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 25px;
+        letter-spacing: 0.03em;
+        text-transform: uppercase;
+        font-feature-settings: "pnum" on, "lnum" on;
+        color: var(--popup-text-color);
+      }
+
+      .store-tooltip__text {
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+        font-feature-settings: "pnum" on, "lnum" on;
+        color: var(--popup-text-color);
+      }
+
+      .store-tooltip__country {
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+        font-feature-settings: "pnum" on, "lnum" on;
+        margin-top: 1px;
+        color: var(--popup-text-color);
+      }
+
+      .store-tooltip__phone {
+        margin-top: 20px;
+        font-size: 12px;
+        line-height: 15px;
+        text-transform: uppercase;
+        font-feature-settings: "pnum" on, "lnum" on;
+        color: var(--popup-text-color);
+      }
+
+      .store-tooltip__schedule {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 20px;
+        letter-spacing: 0.08em;
+        text-transform: capitalize;
+        font-feature-settings: "pnum" on, "lnum" on;
+        color: var(--popup-text-color);
+      }
+
+      .store-tooltip__button {
+        margin-top: 43px;
+        width: 100%;
+        padding: 0 10px;
+        height: 35px;
+        line-height: 33px;
+        border: 1px solid white;
+        color: var(--popup-text-color);
+        background: transparent;
+        letter-spacing: 0;
+        font-weight: 400;
+        font-size: 12px;
+        text-transform: none;
+        display: block;
+        box-sizing: border-box;
+        text-align: center;
+
+        a,
+        input,
+        button,
+        select,
+        textarea {
+          transition: color 0.2s ease, border-color 0.2s ease;
+
+          & a {
+            text-decoration: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    .store-tooltip__close {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      width: 14px;
+      height: 14px;
+      fill: white;
+      cursor: pointer;
+      transition: transform 0.5s;
+
+      & img {
+        box-sizing: content-box;
+      }
+    }
+  }
+
+  //main
+}
