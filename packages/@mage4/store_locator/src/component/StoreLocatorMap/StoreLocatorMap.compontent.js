@@ -38,7 +38,9 @@ class StoreLocatorMap extends PureComponent {
     };
 
     flyTo(store) {
-        window.map.panTo(new google.maps.LatLng(store.lat, store.lng));
+        setTimeout(() => {
+            window.map.panTo(new google.maps.LatLng(store.lat, store.lng));
+        }, 1000)
         // window.map.setZoom(new google.maps.zoom(store.zoom));
 
 
@@ -98,7 +100,7 @@ class StoreLocatorMap extends PureComponent {
                     style={{marginTop: -storeCategoriesHeight}}
                 >
                     {/*map right side*/}
-                    <div id='map' style={{width: "100%", height: "100vh"}}>
+                    <div id='map' style={{width: "100%", height: "100%"}}>
                         {allStores.length !== 0 ? <GoogleMapReact
                             bootstrapURLKeys={{
                                 key: google_api_key ? google_api_key : "AIzaSyCqHWXniQhMZc7PBV-daLmW0q8T9Kceb10",
