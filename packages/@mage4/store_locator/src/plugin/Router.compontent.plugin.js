@@ -15,12 +15,11 @@ const SWITCH_ITEMS_TYPE = (storelocator) => [
   {
     component: (
       <Route
-        path={withStoreRegex("/storelocator")}
+        path={withStoreRegex("/stores")}
         render={(props) => <StoreLocator {...props} />}
       />
     ),
     position: 122,
-    // name: STORELOCATOR,
   },
 ];
 

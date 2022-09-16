@@ -13,6 +13,7 @@ import PropTypes from "prop-types";
 import {PureComponent} from "react";
 import StoreLocator from "./StoreLocator.component";
 import {connect} from "react-redux";
+import DataContainer from 'Util/Request/DataContainer';
 
 
 export const StoreLocatorDispatcher = import(
@@ -44,23 +45,29 @@ export const mapStateToProps = (state) => ({
 /** @namespace Route/StoreLocator/Container/mapDispatchToProps */
 
 export const mapDispatchToProps = (dispatch) => ({
+
+
+    //handle the data through api
+    requestStores: (options) => StoreLocatorDispatcher.then(({default: dispatcher}) => dispatcher.handleData(dispatch, options)), // add on
+    updateMeta: (meta) => dispatch(updateMeta(meta)),
+
+
+
     //later add
     updateBreadcrumbs: (breadcrumbs) => {
         BreadcrumbsDispatcher.then(({default: dispatcher}) => dispatcher.update(breadcrumbs, dispatch));
     }, //later add End
 
-    //handle the data through api
-    requestStores: (options) => StoreLocatorDispatcher.then(({default: dispatcher}) => dispatcher.handleData(dispatch, options)), // add on
-    updateMeta: (meta) => dispatch(updateMeta(meta)),
+
 });
 
 /** @namespace Route/StoreLocator/Container */
 
-export class StoreContainer extends PureComponent {
+export class StoreContainer extends DataContainer {
     static propTypes = {
-        isMobile: PropTypes.bool.isRequired,
-        isLoading: PropTypes.bool.isRequired, // later add
-        updateBreadcrumbs: PropTypes.func.isRequired,
+        isMobile: PropTypes.bool.isRequired, //by default
+        isLoading: PropTypes.bool.isRequired, //by default
+        updateBreadcrumbs: PropTypes.func.isRequired, // later add
         updateMeta: PropTypes.func.isRequired,
         google_map_api_key: PropTypes.string,
     };
@@ -94,7 +101,20 @@ export class StoreContainer extends PureComponent {
         if (this.state.allStores.length === 0 && allStore.length !== 0) {
             this.setState({allStores: allStore});
         }
+
     }
+    _updateBreadcrumbs = () => {
+        const { updateBreadcrumbs, store_locator_url } = this.props;
+        const breadcrumbs = [
+            {
+                url: `/${store_locator_url}`,
+                name: __('Store Locator')
+            }
+        ];
+        updateBreadcrumbs(breadcrumbs);
+
+    }
+
 
     handleCategoryTabButtonClick(stores, storename) {
         this.setState({selectedstore: storename});
@@ -121,13 +141,14 @@ export class StoreContainer extends PureComponent {
 
     containerProps() {
         const {
-            isLoading, isMobile, google_map_api_key, store_locator_url, map_markericon, map_selected_markericon, device,
+            isLoading, isMobile, google_map_api_key, store_locator_url, map_markericon, map_selected_markericon, device,updateBreadcrumbs
         } = this.props;
-        const {filteredStores, showstoreinfo, selectedstore, stateKey, allStores} = this.state;
+        const {filteredStores, showstoreinfo, selectedstore, allStores} = this.state;
 
         return {
             isMobile,
             isLoading,
+            updateBreadcrumbs,
             google_map_api_key,
             store_locator_url,
             map_markericon,

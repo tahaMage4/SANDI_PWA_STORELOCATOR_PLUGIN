@@ -24,6 +24,10 @@ const createMapOptions = (maps) => {
         scrollwheel: true,
         rotateControl: true,
         zoomControl: true,
+        zoomControlOptions: {
+            position: maps.ControlPosition.RIGHT_TOP,
+
+        }
     };
 
 };
@@ -40,18 +44,25 @@ class StoreLocatorMap extends PureComponent {
     flyTo(store) {
         setTimeout(() => {
             window.map.panTo(new google.maps.LatLng(store.lat, store.lng));
-        }, 1000)
-        // window.map.setZoom(new google.maps.zoom(store.zoom));
+            window.map.setZoom(12);
 
+        }, 1000)
 
     }
 
 
     render() {
         const {
-            items, showstoreinfo, filteredStores,
-            handleStoreButtonClick, handleClosedButtonClick, map_markericon, map_selected_markericon, map_style, // addMarkerRef,
-            google_api_key, allStores
+            items,
+            showstoreinfo,
+            filteredStores,
+            handleStoreButtonClick,
+            handleClosedButtonClick,
+            map_markericon,
+            map_selected_markericon,
+            map_style, // addMarkerRef,
+            google_api_key,
+            allStores
         } = this.props;
 
         //Calculate the height of the items & Map compontent
