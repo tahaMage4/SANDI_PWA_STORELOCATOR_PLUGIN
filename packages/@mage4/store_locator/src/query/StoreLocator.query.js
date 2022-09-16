@@ -10,87 +10,60 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-import { Field } from "Util/Query";
+import {Field} from "Util/Query";
 
 /** @namespace Query/StoreLocator/Query */
 export class StoreLocatorQuery {
-  //store ka kam
-  getStores() {
-    return new Field("stores").addFieldList(this.getStoresFields());
-  }
-  getStoresFields() {
-    return [
-      "store_id",
-      "category_id",
-      "name",
-      "address",
-      "store_image",
-      "postcode",
-      "city",
-      "region",
-      "country",
-      "phone",
-      "email",
-      "fax",
-      "website",
-      "open_hours",
-      "static_block_1",
-      "static_block_2",
-      "url_alias",
-      "description",
-      "meta_description",
-      "meta_keywords",
-      "embeded_map",
-      "lat",
-      "lng",
-      "zoom",
-    ];
-  }
-  //store End
+    //store ka kam
+    getStores() {
+        return new Field("stores").addFieldList(this.getStoresFields());
+    }
 
-  //Region
-  getRegions() {
-    return new Field("regions").addFieldList(this.getRegionsFields());
-  }
+    getStoresFields() {
+        return ["store_id", "category_id", "name", "address", "store_image", "postcode", "city", "region", "country", "phone", "email", "fax", "website", "open_hours", "static_block_1", "static_block_2", "url_alias", "description", "meta_description", "meta_keywords", "embeded_map", "lat", "lng", "zoom", "add_this_location", "banner_slider",];
+    }
 
-  getRegionsFields() {
-    return ["id", "name"];
-  }
+    //store End
 
-  //Region Ends
+    //Region
+    getRegions() {
+        return new Field("regions").addFieldList(this.getRegionsFields());
+    }
 
-  // Items
-  getItems() {
-    return new Field("items").addFieldList(this.getItemsFields());
-  }
+    getRegionsFields() {
+        return ["id", "name"];
+    }
 
-  getItemsFields() {
-    return ["category_id", "position", "name", this.getStores()];
-  }
+    //Region Ends
 
-  //Items End
+    // Items
+    getItems() {
+        return new Field("items").addFieldList(this.getItemsFields());
+    }
 
-  //Store SEO
-  getStoreSEO() {
-    return new Field("store_locator_seo").addFieldList(
-      this.getStoreSEOFields()
-    );
-  }
-  getStoreSEOFields() {
-    return ["meta_title", "meta_description", "meta_keywords"];
-  }
-  //Store SEO End
+    getItemsFields() {
+        return ["category_id", "position", "name", this.getStores()];
+    }
 
-  // main
-  getQuery() {
-    return new Field("getLocations").addFieldList([
-      "total_count",
-      this.getItems(),
-      this.getRegions(),
-      this.getStoreSEO(),
-    ]);
-  }
-  // main End
+    //Items End
+
+    //Store SEO
+    getStoreSEO() {
+        return new Field("store_locator_seo").addFieldList(this.getStoreSEOFields());
+    }
+
+    getStoreSEOFields() {
+        return ["meta_title", "meta_description", "meta_keywords"];
+    }
+
+    //Store SEO End
+
+    // main
+    getQuery() {
+        return new Field("getLocations").addFieldList(["total_count", this.getItems(), this.getRegions(), this.getStoreSEO(),]);
+    }
+
+    // main End
 }
 
 export default new StoreLocatorQuery();

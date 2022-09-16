@@ -66,9 +66,8 @@ export class StoreContainer extends PureComponent {
     };
 
     state = {
-        filteredStores: [], allStores: [], showstoreinfo: false, selectedstore: "", // google_map_api_key: "",
-        // later add
-        // stateKey: null,
+        filteredStores: [], allStores: [], showstoreinfo: false, selectedstore: "",
+
     };
 
     containerFunctions = {
@@ -79,7 +78,7 @@ export class StoreContainer extends PureComponent {
 
     // add on
     componentDidMount() {
-        // first wala
+        // request the hole store through the api
         const {requestStores} = this.props;
         requestStores();
     }
@@ -137,7 +136,7 @@ export class StoreContainer extends PureComponent {
             filteredStores,
             showstoreinfo, //close drawer state
             selectedstore, //check the icon in category
-            stateKey, // google_map_api_key_state
+            // stateKey, // google_map_api_key_state
             allStores, //All Stores
         };
     }

@@ -22,6 +22,7 @@ export class StoreCategoriesContainer extends PureComponent {
     };
   }
 
+
   render() {
     return <StoreCategories {...this.containerProps()} />;
   }

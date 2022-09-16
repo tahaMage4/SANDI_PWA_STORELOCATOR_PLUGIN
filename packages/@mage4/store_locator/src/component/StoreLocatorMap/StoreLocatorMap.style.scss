@@ -97,7 +97,7 @@ body {
     flex-grow: 1;
     position: relative;
     height: 432px; //for height negative break
-    overflow: hidden; // for aniamted & hidden the drawer
+    overflow: hidden; // for animate & hidden the drawer
 
     @include mobile {
       margin-top: 0px !important;
@@ -111,36 +111,36 @@ body {
       }
     }
 
-    .leaflet-container {
-      width: 50vw;
-      height: 100%;
-      z-index: 0;
-      position: relative;
-      max-width: 950px;
-      min-width: 950px;
-    }
+    //.leaflet-container {
+    //  width: 50vw;
+    //  height: 100%;
+    //  z-index: 0;
+    //  position: relative;
+    //  max-width: 950px;
+    //  min-width: 950px;
+    //}
 
-    .leaflet-popup-content-wrapper,
-    .leaflet-popup-tip {
-      background: none;
-      box-shadow: none;
-    }
-
-    .leaflet-popup-content {
-      margin: 13px 24px 13px 20px;
-      line-height: 1.3;
-      min-height: 1px;
-      width: 220px;
-    }
-
-    .leaflet-left {
-      left: 878px;
-    }
-
-    .leaflet-top {
-      top: 342px;
-      padding: 15px;
-    }
+    //.leaflet-popup-content-wrapper,
+    //.leaflet-popup-tip {
+    //  background: none;
+    //  box-shadow: none;
+    //}
+    //
+    //.leaflet-popup-content {
+    //  margin: 13px 24px 13px 20px;
+    //  line-height: 1.3;
+    //  min-height: 1px;
+    //  width: 220px;
+    //}
+    //
+    //.leaflet-left {
+    //  left: 878px;
+    //}
+    //
+    //.leaflet-top {
+    //  top: 342px;
+    //  padding: 15px;
+    //}
 
     .store-tooltip.stores__tooltip.is-active {
       opacity: 1;

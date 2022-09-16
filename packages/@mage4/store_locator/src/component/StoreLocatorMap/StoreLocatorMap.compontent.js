@@ -49,12 +49,12 @@ class StoreLocatorMap extends PureComponent {
 
     render() {
         const {
-            items, showstoreinfo, filteredStores, // store,
+            items, showstoreinfo, filteredStores,
             handleStoreButtonClick, handleClosedButtonClick, map_markericon, map_selected_markericon, map_style, // addMarkerRef,
             google_api_key, allStores
         } = this.props;
 
-        //Calculate the height of the categroy & Map Compontent
+        //Calculate the height of the items & Map compontent
         let storeCategoriesHeight = 432;
         let storeCategories = document.getElementById("StoreCategories");
 
@@ -72,7 +72,6 @@ class StoreLocatorMap extends PureComponent {
                             <ol className="shop-list__list hide-lg">
                                 {filteredStores.map((store, index) => (<div
                                     key={index}
-                                    value="store"
                                 >
                                     <li className="shop-list__shop" onClick={() => {
                                         this.flyTo(store)
