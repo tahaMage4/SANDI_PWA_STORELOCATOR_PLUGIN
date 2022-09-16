@@ -4,6 +4,7 @@ import "./StoreLocatorMap.style.scss";
 
 import GoogleMapReact from "google-map-react";
 import pinBigImageSelected from '../../public/assets/images/global/pinSelected.svg';
+import {RIGHT} from "@scandipwa/scandipwa/src/component/ChevronIcon/ChevronIcon.config";
 
 export const MARKER_ICON_PATH = "ideo/storelocator/markericon/";
 export const SELECTED_MARKER_ICON_PATH = "ideo/storelocator/selected_markericon/";
@@ -23,12 +24,14 @@ const createMapOptions = (maps) => {
         streetViewControl: true,
         scrollwheel: true,
         rotateControl: true,
+        fullscreenControl: true,
         zoomControl: true,
         zoomControlOptions: {
-            position: maps.ControlPosition.RIGHT_TOP,
+            position: maps.ControlPosition.RIGHT_TOP
 
         }
     };
+
 
 };
 

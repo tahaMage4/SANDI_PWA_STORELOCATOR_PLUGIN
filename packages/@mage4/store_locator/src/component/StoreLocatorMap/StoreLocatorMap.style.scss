@@ -287,8 +287,20 @@ body {
     }
   }
 
-  .gmnoprint{
-    margin-top: 170px !important;
+  .gmnoprint {
+    margin-top: 140px !important;
+
+    //@include desktop {
+    //  margin-top: 420px !important;
+    //}
+    //
+    //@include mobile {
+    //  margin-top: 140px !important;
+    //}
+    //@include wide-desktop {
+    //  margin-top: 420px !important;;
+    //}
+
   }
 
   //main

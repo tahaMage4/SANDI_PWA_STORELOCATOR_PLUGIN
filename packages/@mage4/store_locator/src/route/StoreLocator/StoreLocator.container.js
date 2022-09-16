@@ -63,7 +63,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 /** @namespace Route/StoreLocator/Container */
 
-export class StoreContainer extends DataContainer {
+export class StoreContainer extends PureComponent {
     static propTypes = {
         isMobile: PropTypes.bool.isRequired, //by default
         isLoading: PropTypes.bool.isRequired, //by default
@@ -103,17 +103,19 @@ export class StoreContainer extends DataContainer {
         }
 
     }
-    _updateBreadcrumbs = () => {
-        const { updateBreadcrumbs, store_locator_url } = this.props;
-        const breadcrumbs = [
-            {
-                url: `/${store_locator_url}`,
-                name: __('Store Locator')
-            }
-        ];
-        updateBreadcrumbs(breadcrumbs);
 
-    }
+
+    // _updateBreadcrumbs = () => {
+    //     const { updateBreadcrumbs, store_locator_url } = this.props;
+    //     const breadcrumbs = [
+    //         {
+    //             url: `/${store_locator_url}`,
+    //             name: __('Store Locator')
+    //         }
+    //     ];
+    //     updateBreadcrumbs(breadcrumbs);
+    //
+    // }
 
 
     handleCategoryTabButtonClick(stores, storename) {
