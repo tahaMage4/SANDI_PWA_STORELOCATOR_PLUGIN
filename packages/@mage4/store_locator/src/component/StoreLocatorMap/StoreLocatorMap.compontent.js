@@ -4,7 +4,6 @@ import "./StoreLocatorMap.style.scss";
 
 import GoogleMapReact from "google-map-react";
 import pinBigImageSelected from '../../public/assets/images/global/pinSelected.svg';
-import {RIGHT} from "@scandipwa/scandipwa/src/component/ChevronIcon/ChevronIcon.config";
 
 export const MARKER_ICON_PATH = "ideo/storelocator/markericon/";
 export const SELECTED_MARKER_ICON_PATH = "ideo/storelocator/selected_markericon/";
@@ -68,6 +67,7 @@ class StoreLocatorMap extends PureComponent {
             allStores
         } = this.props;
 
+
         //Calculate the height of the items & Map compontent
         let storeCategoriesHeight = 432;
         let storeCategories = document.getElementById("StoreCategories");
@@ -120,7 +120,9 @@ class StoreLocatorMap extends PureComponent {
                             }}
                             center={this.props.center}
                             zoom={this.props.zoom}
+
                             options={createMapOptions}
+
                             onGoogleApiLoaded={({map, maps}) => {
                                 window.map = map;
                                 allStores.map(allstore => {
@@ -130,6 +132,7 @@ class StoreLocatorMap extends PureComponent {
                                         icon: pinBigImageSelected,
                                         animation: maps.Animation.BOUNCE,
 
+
                                     })
 
                                     google.maps.event.addListener(marker, 'click', function () {
@@ -137,8 +140,8 @@ class StoreLocatorMap extends PureComponent {
                                         let infowindow = new google.maps.InfoWindow({
                                             content: `
                                        <div class="store-tooltip__content">
-                                       <div class="shop-list__title">${allstore.name}</div>
-                                        <div class="shop-list__text"><p>${allstore.address}</p>
+                                       <div class="store-tooltip__title">${allstore.name}</div>
+                                        <div class="store-tooltip__text"><p>${allstore.address}</p>
                                                <p>${allstore.phone}</p>
                                                
                                                </div>

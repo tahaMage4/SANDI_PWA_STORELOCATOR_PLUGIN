@@ -1,5 +1,5 @@
 :root {
-  --popup-text-color: #fff;
+  --popup-text-color: #000;
 }
 
 body {
@@ -73,24 +73,24 @@ body {
     }
   }
 
-  .shop-list__title {
-    font-size: 15px;
-    line-height: 19px;
-    font-weight: bold;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-feature-settings: "pnum" on, "lnum" on;
-  }
-
-  .shop-list__text {
-    margin-top: 2px;
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    font-feature-settings: "pnum" on, "lnum" on;
-    color: red;
-  }
+  //.shop-list__title {
+  //  font-size: 15px;
+  //  line-height: 19px;
+  //  font-weight: bold;
+  //  letter-spacing: 0.08em;
+  //  text-transform: uppercase;
+  //  font-feature-settings: "pnum" on, "lnum" on;
+  //}
+  //
+  //.shop-list__text {
+  //  margin-top: 2px;
+  //  font-size: 12px;
+  //  line-height: 15px;
+  //  letter-spacing: 0.08em;
+  //  text-transform: uppercase;
+  //  font-feature-settings: "pnum" on, "lnum" on;
+  //  color: red;
+  //}
 
   //map style
   .stores__right {
@@ -98,6 +98,10 @@ body {
     position: relative;
     height: 432px; //for height negative break
     overflow: hidden; // for animate & hidden the drawer
+    div {
+      position: static;
+    }
+
 
     @include mobile {
       margin-top: 0px !important;
@@ -188,9 +192,9 @@ body {
     }
 
     .store-tooltip__content {
-      margin-top: 100px;
-      padding: 10px;
-      color: var(--popup-text-color);
+      //margin-top: 100px;
+      //padding: 10px;
+      //color: var(--popup-text-color);
 
       .store-tooltip__title {
         font-weight: bold;
@@ -209,6 +213,7 @@ body {
         font-feature-settings: "pnum" on, "lnum" on;
         color: var(--popup-text-color);
       }
+
 
       .store-tooltip__country {
         font-weight: 700;
@@ -287,19 +292,23 @@ body {
     }
   }
 
-  .gmnoprint {
-    margin-top: 140px !important;
 
-    //@include desktop {
-    //  margin-top: 420px !important;
-    //}
-    //
-    //@include mobile {
-    //  margin-top: 140px !important;
-    //}
-    //@include wide-desktop {
-    //  margin-top: 420px !important;;
-    //}
+  .gmnoprint {
+    top: auto !important;
+    bottom: 0;
+  }
+
+  .gm-style-iw {
+    max-width: 200px !important;
+  }
+
+  .gm-style .gm-style-iw-tc {
+    height: 12px !important;
+    left: 0 !important;
+
+    &::after {
+      display: none;
+    }
 
   }
 
