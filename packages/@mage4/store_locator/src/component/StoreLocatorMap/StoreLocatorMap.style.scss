@@ -1,6 +1,9 @@
 :root {
   --popup-text-color: #000;
+  --map-text-color: #000;
 }
+
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
 
 body {
   counter-reset: list;
@@ -19,6 +22,7 @@ body {
     width: 360px;
     margin-right: 50px;
     flex-shrink: 0;
+    margin-top: 11px;
 
     & .sidebar_scroll {
       width: 100%;
@@ -44,6 +48,10 @@ body {
     list-style: none;
   }
 
+  li:last-child {
+    margin-bottom: 0 !important;
+  }
+
   .shop-list__shop {
     counter-increment: list;
     border-radius: 2px;
@@ -57,7 +65,7 @@ body {
 
     &::before {
       content: "0" counter(list) ".";
-      font-family: "Source Sans Pro", sans-serif;
+      font-family: $font-source-sans-pro;
       font-style: normal;
       font-weight: bold;
       font-size: 15px;
@@ -73,24 +81,27 @@ body {
     }
   }
 
-  //.shop-list__title {
-  //  font-size: 15px;
-  //  line-height: 19px;
-  //  font-weight: bold;
-  //  letter-spacing: 0.08em;
-  //  text-transform: uppercase;
-  //  font-feature-settings: "pnum" on, "lnum" on;
-  //}
-  //
-  //.shop-list__text {
-  //  margin-top: 2px;
-  //  font-size: 12px;
-  //  line-height: 15px;
-  //  letter-spacing: 0.08em;
-  //  text-transform: uppercase;
-  //  font-feature-settings: "pnum" on, "lnum" on;
-  //  color: red;
-  //}
+  .shop-list__title {
+    font-size: 15px;
+    line-height: 19px;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-family: $font-source-sans-pro;
+    //font-feature-settings: "pnum" on, "lnum" on;
+    color: var(--map-text-color);
+
+  }
+
+  .shop-list__text {
+    margin-top: 2px;
+    font-size: 12px;
+    line-height: 0;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #9a9a9a;
+  }
 
   //map style
   .stores__right {
@@ -107,12 +118,12 @@ body {
       margin-top: 0px !important;
       margin-bottom: 10px;
 
-      .leaflet-container {
-        width: 100% !important;
-        height: 100% !important;
-        z-index: 0;
-        position: relative;
-      }
+      //.leaflet-container {
+      //  width: 100% !important;
+      //  height: 100% !important;
+      //  z-index: 0;
+      //  position: relative;
+      //}
     }
 
     //.leaflet-container {
@@ -295,7 +306,7 @@ body {
 
   .gmnoprint {
     top: auto !important;
-    bottom: 0;
+    //bottom: 0;
   }
 
   .gm-style-iw {
@@ -303,13 +314,14 @@ body {
   }
 
   .gm-style .gm-style-iw-tc {
-    height: 12px !important;
-    left: 0 !important;
-
     &::after {
       display: none;
     }
 
+  }
+
+  .gm-style .gm-style-iw-d {
+    overflow: hidden;
   }
 
   //main

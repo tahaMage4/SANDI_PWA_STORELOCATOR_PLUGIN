@@ -1,11 +1,14 @@
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+
 h1 {
   font-style: normal;
-  font-weight: 900;
+  font-weight: 700;
   font-size: 28px;
   line-height: 34px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 30px;
+  font-family: $font-source-sans-pro;
 
   @include mobile {
     padding-top: 35px;
@@ -18,7 +21,7 @@ h1 {
   max-width: 333px;
   overflow: hidden;
   overflow-y: scroll;
-  max-height: 432px; //its the caculated value for height
+  max-height: 432px; //its the calculated value for height
   z-index: 5;
 
   @include mobile {
@@ -53,7 +56,7 @@ h1 {
           border: 0;
           border-radius: 0;
           background-color: transparent;
-          font-family: "Source Sans Pro", sans-serif;
+          font-family: $font-source-sans-pro;
           font-size: 12px;
         }
 
@@ -71,12 +74,13 @@ h1 {
         padding: 8px 10px;
 
         .list-checkbox__text {
-          font-weight: bold;
+          font-weight: 600;
           font-size: 13px;
           line-height: 16px;
           letter-spacing: 0.08em;
           text-transform: uppercase;
           flex-grow: 1;
+          font-family: $font-source-sans-pro;
         }
 
         .list-checkbox__tick {

@@ -32,8 +32,8 @@ import {updateMeta} from "Store/Meta/Meta.action";
 export const mapStateToProps = (state) => ({
     isLoading: state.ConfigReducer.isLoading, //default
     isMobile: state.ConfigReducer.device.isMobile, //default
-    items: state.StoreLocatorReducer.items,
-    storelocator: state.StoreLocatorReducer.storelocator, //lazmi
+    items: state.StoreLocatorReducer.items, //state of items
+    storelocator: state.StoreLocatorReducer.storelocator, //Custom Reducer
     //later  add
     google_map_api_key: state.ConfigReducer.google_map_api_key,
     store_locator_url: state.ConfigReducer.store_locator_url,
@@ -52,7 +52,6 @@ export const mapDispatchToProps = (dispatch) => ({
     updateMeta: (meta) => dispatch(updateMeta(meta)),
 
 
-
     //later add
     updateBreadcrumbs: (breadcrumbs) => {
         BreadcrumbsDispatcher.then(({default: dispatcher}) => dispatcher.update(breadcrumbs, dispatch));
@@ -68,8 +67,7 @@ export class StoreContainer extends PureComponent {
         isMobile: PropTypes.bool.isRequired, //by default
         isLoading: PropTypes.bool.isRequired, //by default
         updateBreadcrumbs: PropTypes.func.isRequired, // later add
-        updateMeta: PropTypes.func.isRequired,
-        google_map_api_key: PropTypes.string,
+        updateMeta: PropTypes.func.isRequired, google_map_api_key: PropTypes.string,
     };
 
     state = {
@@ -143,7 +141,14 @@ export class StoreContainer extends PureComponent {
 
     containerProps() {
         const {
-            isLoading, isMobile, google_map_api_key, store_locator_url, map_markericon, map_selected_markericon, device,updateBreadcrumbs
+            isLoading,
+            isMobile,
+            google_map_api_key,
+            store_locator_url,
+            map_markericon,
+            map_selected_markericon,
+            device,
+            updateBreadcrumbs
         } = this.props;
         const {filteredStores, showstoreinfo, selectedstore, allStores} = this.state;
 

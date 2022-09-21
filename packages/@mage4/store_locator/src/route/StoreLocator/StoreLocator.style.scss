@@ -1,6 +1,17 @@
+
+@import '../../style/fonts/_fonts.style';
+//@import '../../style/abstract/_var.style';
+
+
+$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+
+
+
 html {
   scroll-behavior: smooth;
 }
+
+
 
 .StoreLocator {
   max-width: 1450px;

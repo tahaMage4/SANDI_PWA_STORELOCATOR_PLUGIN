@@ -1,37 +1,19 @@
 import PropTypes from "prop-types";
 import React, {PureComponent} from "react";
 import "./StoreLocatorMap.style.scss";
-
 import GoogleMapReact from "google-map-react";
 import pinBigImageSelected from '../../public/assets/images/global/pinSelected.svg';
 
 export const MARKER_ICON_PATH = "ideo/storelocator/markericon/";
 export const SELECTED_MARKER_ICON_PATH = "ideo/storelocator/selected_markericon/";
 
-const markerStyle = {
-    position: "absolute", top: "100%", left: "50%", transform: "translate(-50%, -100%)", height: "21px", width: "32px",
-};
+import MapStyle from './MapStyle.js'
 
 
-const createMapOptions = (maps) => {
+const MapOptions = (maps) => {
     return {
-        panControl: true,
-        mapTypeControl: true,
-        scaleControl: true,
-        overviewMapControl: true,
-        disableDefaultUI: true,
-        streetViewControl: true,
-        scrollwheel: true,
-        rotateControl: true,
-        fullscreenControl: true,
-        zoomControl: true,
-        zoomControlOptions: {
-            position: maps.ControlPosition.RIGHT_TOP
-
-        }
+        panControl: true, scrollwheel: true, styles: MapStyle
     };
-
-
 };
 
 
@@ -91,14 +73,13 @@ class StoreLocatorMap extends PureComponent {
                                         this.flyTo(store)
                                     }}>
                                         <div className="shop-list__content">
-                                            <p className="shop-list__text">{store.name}</p>
-                                            <p className="shop-list__tel">
-                                                <b>{store.country}</b>
-                                                <a href="#">{store.phone}</a>
-                                            </p>
-                                            <p>{store.city}</p>
-                                            <p>{store.country}</p>
-                                            <p>{store.email}</p>
+                                            <p className="shop-list__title">{store.name}</p>
+                                            <p className="shop-list__text">{store.description}</p>
+                                            {/*<a href={`http://maps.google.com/maps?z=12&t=m&q=loc:${store.lat}+${store.lng}`}*/}
+                                            {/*   target="_blank">*/}
+                                            {/*    store location*/}
+                                            {/*</a>*/}
+
                                         </div>
                                     </li>
                                 </div>))}
@@ -121,7 +102,7 @@ class StoreLocatorMap extends PureComponent {
                             center={this.props.center}
                             zoom={this.props.zoom}
 
-                            options={createMapOptions}
+                            options={MapOptions()}
 
                             onGoogleApiLoaded={({map, maps}) => {
                                 window.map = map;
@@ -141,17 +122,17 @@ class StoreLocatorMap extends PureComponent {
                                             content: `
                                        <div class="store-tooltip__content">
                                        <div class="store-tooltip__title">${allstore.name}</div>
-                                        <div class="store-tooltip__text"><p>${allstore.address}</p>
-                                               <p>${allstore.phone}</p>
-                                               
-                                               </div>
+                                        <div class="store-tooltip__text">
+                                        <p>${allstore.address}</p>
+                                         <p>${allstore.phone}</p>
+                                         <a href="http://maps.google.com/maps?z=12&t=m&q=loc:${allstore.lat}+${allstore.lng}" target="_blank"> get direction</a>
+                                         </div>
                                         </div>
                                         </div>
                                         `
 
                                         });
-                                        infowindow.open(map, marker);
-                                        // items(allstore);
+                                        infowindow.open(map, marker)
                                     })
                                 })
                             }}
