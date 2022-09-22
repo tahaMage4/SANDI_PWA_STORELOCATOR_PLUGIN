@@ -16,6 +16,7 @@ export const mapDispatchToProps = (dispatch) => ({});
 export class StoreCategoriesContainer extends PureComponent {
     containerProps() {
         const {items, handleCategoryTabButtonClick, selectedstore} = this.props;
+        console.log("props in cateroy" , this.props)
         return {
             items, handleCategoryTabButtonClick, selectedstore,
         };

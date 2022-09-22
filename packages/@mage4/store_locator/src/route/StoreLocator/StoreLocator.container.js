@@ -71,15 +71,15 @@ export class StoreContainer extends PureComponent {
     };
 
     state = {
-        filteredStores: [], allStores: [], showstoreinfo: false, selectedstore: "",
+        items: [], allStores: [], // showstoreinfo: false, selectedstore: "",
 
     };
 
-    containerFunctions = {
-        handleCategoryTabButtonClick: this.handleCategoryTabButtonClick.bind(this),
-        handleStoreButtonClick: this.handleStoreButtonClick.bind(this), // Open drawer store
-        handleClosedButtonClick: this.handleClosedButtonClick.bind(this), // close drawer store
-    };
+    // containerFunctions = {
+    //     handleCategoryTabButtonClick: this.handleCategoryTabButtonClick.bind(this),
+    //     handleStoreButtonClick: this.handleStoreButtonClick.bind(this), // Open drawer store
+    //     handleClosedButtonClick: this.handleClosedButtonClick.bind(this), // close drawer store
+    // };
 
     // add on
     componentDidMount() {
@@ -88,19 +88,19 @@ export class StoreContainer extends PureComponent {
         requestStores();
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        const {items} = this.props;
-        let allStore = Object.values(items).reduce((initialState, item) => {
-
-            if (item.stores) initialState = [...item.stores, ...initialState]
-            return initialState;
-        }, []);
-
-        if (this.state.allStores.length === 0 && allStore.length !== 0) {
-            this.setState({allStores: allStore});
-        }
-
-    }
+    // componentDidUpdate(prevProps, prevState, snapshot) {
+    //     const {items} = this.props;
+    //     let allStore = Object.values(items).reduce((initialState, item) => {
+    //
+    //         if (item.stores) initialState = [...item.stores, ...initialState]
+    //         return initialState;
+    //     }, []);
+    //
+    //     if (this.state.allStores.length === 0 && allStore.length !== 0) {
+    //         this.setState({allStores: allStore});
+    //     }
+    //
+    // }
 
 
     // _updateBreadcrumbs = () => {
@@ -116,28 +116,28 @@ export class StoreContainer extends PureComponent {
     // }
 
 
-    handleCategoryTabButtonClick(stores, storename) {
-        this.setState({selectedstore: storename});
-        this.setState({filteredStores: stores});
-    }
+    // handleCategoryTabButtonClick(stores, storename) {
+    //     this.setState({selectedstore: storename});
+    //     this.setState({filteredStores: stores});
+    // }
 
     // Open drawer store
-    handleStoreButtonClick() {
-        this.setState({showstoreinfo: true});
-        setTimeout(() => {
-            document.getElementsByClassName("store-tooltip").style.left = 0;
-        }, 100);
-
-
-    }
+    // handleStoreButtonClick() {
+    //     this.setState({showstoreinfo: true});
+    //     setTimeout(() => {
+    //         document.getElementsByClassName("store-tooltip").style.left = 0;
+    //     }, 100);
+    //
+    //
+    // }
 
     //closed drawer store
-    handleClosedButtonClick() {
-        document.getElementById("stores__tooltip").style.left = "-300px";
-        setTimeout(() => {
-            this.setState({showstoreinfo: false});
-        }, 500);
-    }
+    // handleClosedButtonClick() {
+    //     document.getElementById("stores__tooltip").style.left = "-300px";
+    //     setTimeout(() => {
+    //         this.setState({showstoreinfo: false});
+    //     }, 500);
+    // }
 
     containerProps() {
         const {
@@ -150,7 +150,8 @@ export class StoreContainer extends PureComponent {
             device,
             updateBreadcrumbs
         } = this.props;
-        const {filteredStores, showstoreinfo, selectedstore, allStores} = this.state;
+
+        const {items, showstoreinfo, selectedstore, allStores} = this.state;
 
         return {
             isMobile,
@@ -161,7 +162,7 @@ export class StoreContainer extends PureComponent {
             map_markericon,
             map_selected_markericon,
             device,
-            filteredStores,
+            items,
             showstoreinfo, //close drawer state
             selectedstore, //check the icon in category
             // stateKey, // google_map_api_key_state

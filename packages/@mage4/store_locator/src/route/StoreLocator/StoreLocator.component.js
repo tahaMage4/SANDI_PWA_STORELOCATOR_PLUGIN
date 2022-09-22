@@ -8,6 +8,7 @@ import StoreCategoriesCompontent from "../../component/StoreCategories";
 class StoreLocator extends PureComponent {
   render() {
     const {
+      items,
       filteredStores,
       showstoreinfo,
       handleCategoryTabButtonClick,
@@ -21,12 +22,13 @@ class StoreLocator extends PureComponent {
 
     return (
       <main block="StoreLocator">
-        <StoreCategoriesCompontent
-          handleCategoryTabButtonClick={handleCategoryTabButtonClick}
-          selectedstore={selectedstore}
-        />
+        {/*<StoreCategoriesCompontent*/}
+        {/*    items={items}*/}
+        {/*  // handleCategoryTabButtonClick={handleCategoryTabButtonClick}*/}
+        {/*  selectedstore={selectedstore}*/}
+        {/*/>*/}
         <StoreLocatorMap
-          filteredStores={filteredStores}
+          items={items}
           allStores={allStores}
           showstoreinfo={showstoreinfo}
           handleStoreButtonClick={handleStoreButtonClick}

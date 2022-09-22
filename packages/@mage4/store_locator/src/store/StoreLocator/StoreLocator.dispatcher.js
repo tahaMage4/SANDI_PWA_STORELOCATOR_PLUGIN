@@ -9,7 +9,7 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-import { updatelocation } from "./StoreLocator.action";
+import { updatestoreslocation } from "./StoreLocator.action";
 import { QueryDispatcher } from "Util/Request";
 import StoreLocatorQuery from "../../query/StoreLocator.query";
 
@@ -26,10 +26,10 @@ export class StoreLocatorDispatcher extends QueryDispatcher {
 
   onSuccess(data, dispatch) {
     const {
-      getLocations: { items, total_count, regions, store_locator_seo },
+      getMapStores: { items, total_count },
     } = data;
     dispatch(
-      updatelocation({ items, total_count, regions, store_locator_seo })
+        updatestoreslocation({ items, total_count })
     );
   }
 

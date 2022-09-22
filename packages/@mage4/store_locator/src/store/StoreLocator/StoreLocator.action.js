@@ -9,12 +9,12 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-export const UPDATE_LOCATION = "UPDATE_LOCATION";
+export const UPDATE_STORE_LOCATION = "UPDATE_STORE_LOCATION";
 
 /** @namespace Store/StoreLocator/Action/updatestorelocator */
-export const updatelocation = (locationData) => {
+export const updatestoreslocation = (storesData) => {
   return {
-    type: UPDATE_LOCATION,
-    locationData, //payload
+    type: UPDATE_STORE_LOCATION,
+    storesData, //payload
   };
 };

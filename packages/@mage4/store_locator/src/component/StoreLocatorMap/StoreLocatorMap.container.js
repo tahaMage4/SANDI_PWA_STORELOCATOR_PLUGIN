@@ -25,13 +25,11 @@ export const mapDispatchToProps = (dispatch) => ({
 export class StoreLocatorMapContainer extends PureComponent {
     containerProps() {
         const {
-            items, filteredStores, showstoreinfo, allStores, handleStoreButtonClick, handleClosedButtonClick,
+            items, showstoreinfo,handleStoreButtonClick, handleClosedButtonClick,
         } = this.props;
 
         return {
             items,
-            filteredStores,
-            allStores,
             showstoreinfo,
             handleStoreButtonClick,
             handleClosedButtonClick, // google_map_api_key,
