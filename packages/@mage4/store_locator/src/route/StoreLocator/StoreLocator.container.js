@@ -88,19 +88,6 @@ export class StoreContainer extends PureComponent {
         requestStores();
     }
 
-    // componentDidUpdate(prevProps, prevState, snapshot) {
-    //     const {items} = this.props;
-    //     let allStore = Object.values(items).reduce((initialState, item) => {
-    //
-    //         if (item.stores) initialState = [...item.stores, ...initialState]
-    //         return initialState;
-    //     }, []);
-    //
-    //     if (this.state.allStores.length === 0 && allStore.length !== 0) {
-    //         this.setState({allStores: allStore});
-    //     }
-    //
-    // }
 
 
     // _updateBreadcrumbs = () => {

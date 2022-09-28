@@ -34,10 +34,6 @@ body {
   }
 
   & .sidebar_left {
-    //width: 360px;
-    //margin-right: 50px;
-    //flex-shrink: 0;
-    //margin-top: 11px;
     width: 360px;
     max-width: 333px;
     max-height: 432px;
@@ -140,6 +136,7 @@ body {
     text-transform: uppercase;
     font-feature-settings: 'pnum' on, 'lnum' on;
     color: var(--map-background-color);
+    word-wrap: break-word;
   }
 
   //map style
@@ -206,9 +203,11 @@ body {
     }
 
     .store-tooltip__content {
-      //margin-top: 100px;
-      //padding: 10px;
-      //color: var(--popup-text-color);
+      margin-top: 20px;
+
+      .store__image {
+        height: 150px;
+      }
 
       .store-tooltip__title {
         font-weight: bold;
@@ -218,26 +217,160 @@ body {
         text-transform: uppercase;
         font-feature-settings: "pnum" on, "lnum" on;
         color: var(--popup-text-color);
+        margin-bottom: 10px;
+        margin-top: 5px;
+        text-align: center;
       }
+
+      .store-tooltip__details {
+        margin-top: 15px;
+      }
+
+      .store-tooltip__address {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding-inline: 40px;
+        margin-bottom: 10px;
+
+        div > p {
+          word-wrap: break-word;
+          margin-bottom: 0;
+        }
+
+        > div:first-child {
+          width: 25%;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+        }
+
+        > div:last-child {
+          width: 75%;
+        }
+
+      }
+
+      //coustom
+      //.dropdown {
+      //  padding-inline: 40px;
+      //
+      //  h5 {
+      //    &::before {
+      //      content: '';
+      //      display: inline-block;
+      //      padding-right: 10px;
+      //      background: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg") center center;
+      //      height: 18px;
+      //      width: 18px;
+      //      background-repeat: no-repeat;
+      //      background-size: cover;
+      //      position: relative;
+      //      top: 2px;
+      //      right: 4px;
+      //    }
+      //
+      //    &::after {
+      //      content: '>';
+      //      position: absolute;
+      //      //right: 25px;
+      //      left: 90px;
+      //      top: 8px;
+      //    }
+      //  }
+      //
+      //  .sub_menu {
+      //    max-height: 0;
+      //    overflow: hidden;
+      //    height: 100%;
+      //    transition: all 1s ease .3s;
+      //
+      //    li {
+      //      text-align: center;
+      //
+      //      &::before {
+      //        content: unset;
+      //      }
+      //    }
+      //  }
+      //
+      //  &:hover {
+      //    h5::after {
+      //      content: '<'
+      //    }
+      //
+      //    .sub_menu {
+      //      max-height: 200px;
+      //    }
+      //  }
+      //}
+
+
+      //dropdown work
+      select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        outline: 0;
+        background: var(--map-background-color);
+        background-image: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg") center center;
+      }
+
+      .select {
+        position: relative;
+        display: block;
+        line-height: 3;
+        background: #eeeeee;
+        overflow: hidden;
+        border-radius: .25em;
+        width: 13rem;
+        height: 4rem;
+        margin-left: 8rem;
+
+        select {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0 0 0 .5em;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        select::-ms-expand {
+          display: none;
+        }
+
+        &::after {
+          content: '\25BC';
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          padding: 0 1em;
+          background: #eee;
+          pointer-events: none;
+        }
+
+        &:hover::after {
+          color: #F39C12;
+        }
+
+        //<!-- For different browsers -->
+        &::after {
+          -webkit-transition: .25s all ease;
+          -o-transition: .25s all ease;
+          transition: .25s all ease;
+        }
+
+      }
+
 
       .store-tooltip__text {
         font-size: 12px;
-        line-height: 15px;
-        text-transform: uppercase;
-        font-feature-settings: "pnum" on, "lnum" on;
         color: var(--popup-text-color);
       }
 
-
-      .store-tooltip__country {
-        font-weight: 700;
-        font-size: 12px;
-        line-height: 15px;
-        text-transform: uppercase;
-        font-feature-settings: "pnum" on, "lnum" on;
-        margin-top: 1px;
-        color: var(--popup-text-color);
-      }
 
       .store-tooltip__phone {
         margin-top: 20px;
@@ -248,44 +381,52 @@ body {
         color: var(--popup-text-color);
       }
 
-      .store-tooltip__schedule {
-        margin-top: 22px;
-        font-size: 12px;
-        line-height: 20px;
-        letter-spacing: 0.08em;
-        text-transform: capitalize;
-        font-feature-settings: "pnum" on, "lnum" on;
-        color: var(--popup-text-color);
+
+      .store-tooltip__buttons {
+        display: flex;
+        justify-content: space-evenly;
       }
 
-      .store-tooltip__button {
-        margin-top: 43px;
-        width: 100%;
-        padding: 0 10px;
-        height: 35px;
-        line-height: 33px;
-        border: 1px solid white;
-        color: var(--popup-text-color);
-        background: transparent;
-        letter-spacing: 0;
-        font-weight: 400;
-        font-size: 12px;
-        text-transform: none;
+
+      .store-tooltip__button__div {
+        cursor: pointer;
+        color: rgb(26, 115, 232);
+        padding: 10px;
+        border: 1px solid rgb(26, 115, 232);
+        border-radius: 25px;
+
+        &:hover {
+          background-color: lightblue;
+        }
+
+
+      }
+
+      .store-tooltip__button__img {
+        height: 18px !important;
+        width: 18px !important;
+      }
+
+      .store-tooltip__button__text {
         display: block;
-        box-sizing: border-box;
+        margin-top: 10px;
+        text-transform: lowercase !important;
+        font-size: 12px;
+        font-family: $font-source-sans-pro;
+        color: rgb(26, 115, 232);
         text-align: center;
+      }
 
-        a,
-        input,
-        button,
-        select,
-        textarea {
-          transition: color 0.2s ease, border-color 0.2s ease;
+      a,
+      input,
+      button,
+      select,
+      textarea {
+        //transition: color 0.2s ease, border-color 0.2s ease;
 
-          & a {
-            text-decoration: none;
-            cursor: pointer;
-          }
+        & a {
+          text-decoration: none;
+          cursor: pointer;
         }
       }
     }
@@ -301,22 +442,31 @@ body {
       transition: transform 0.5s;
 
       & img {
-        box-sizing: content-box;
+        //box-sizing: content-box;
       }
     }
   }
 
 
+  //google-maps-react styling
   .gmnoprint {
     top: auto !important;
-    //bottom: 0;
+  }
+
+  .gm-style-iw-d {
+    max-height: 100% !important;
   }
 
   .gm-style-iw {
-    max-width: 200px !important;
+    max-width: 300px !important;
+    height: 432px !important;
+    max-height: 400px !important;
+    width: 100%;
   }
 
   .gm-style .gm-style-iw-tc {
+    padding: 12px;
+
     &::after {
       display: none;
     }
@@ -324,8 +474,16 @@ body {
   }
 
   .gm-style .gm-style-iw-d {
-    overflow: hidden;
+    overflow-y: scroll !important;
   }
+
+
+  .gm-style-iw {
+    max-height: 432px;
+  }
+
+  //google-maps-react styling End
+
 
   //main
 }
