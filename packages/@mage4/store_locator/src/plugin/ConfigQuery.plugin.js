@@ -17,11 +17,11 @@ export class ConfigQueryPlugin {
   _aroundGetStoreConfigFields = (args, callback, instance) => [
     ...callback.apply(instance, args),
     "store_locator_url",
-    "google_api_key",
-    "map_zoom",
-    "map_style",
-    "map_markericon",
-    "map_selected_markericon",
+    // "google_api_key",
+    // "map_zoom",
+    // "map_style",
+    // "map_markericon",
+    // "map_selected_markericon",
   ];
 }
 

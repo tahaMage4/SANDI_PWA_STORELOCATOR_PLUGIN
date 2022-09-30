@@ -76,6 +76,7 @@ export class ConfigQuery extends SourceConfigQuery {
       "newsletter_subscription_allow_guest_subscribe",
       "newsletter_subscription_confirm",
       "delivery_instore_active",
+      // "storelocator_url",
       // "access_token_lifetime",
       // "is_allowed_reorder",
       // "rss_order_subscribe_allow",

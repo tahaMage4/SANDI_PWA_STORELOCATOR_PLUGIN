@@ -18,7 +18,7 @@ import DataContainer from 'Util/Request/DataContainer';
 
 export const StoreLocatorDispatcher = import(
     /* webpackMode: "lazy", webpackChunkName: "dispatchers" */
-    "../../store/StoreLocator/StoreLocator.dispatcher"
+    "@mage4/store_locator/src/store/StoreLocator/StoreLocator.dispatcher"
     );
 
 // later add
@@ -35,11 +35,11 @@ export const mapStateToProps = (state) => ({
     items: state.StoreLocatorReducer.items, //state of items
     storelocator: state.StoreLocatorReducer.storelocator, //Custom Reducer
     //later  add
-    google_map_api_key: state.ConfigReducer.google_map_api_key,
-    store_locator_url: state.ConfigReducer.store_locator_url,
-    map_markericon: state.ConfigReducer.map_markericon,
-    map_selected_markericon: state.ConfigReducer.map_selected_markericon,
-    device: state.ConfigReducer.device,
+    // google_map_api_key: state.ConfigReducer.google_map_api_key,
+    // store_locator_url: state.ConfigReducer.store_locator_url,
+    // map_markericon: state.ConfigReducer.map_markericon,
+    // map_selected_markericon: state.ConfigReducer.map_selected_markericon,
+    // device: state.ConfigReducer.device,
 });
 
 /** @namespace Route/StoreLocator/Container/mapDispatchToProps */
@@ -67,28 +67,25 @@ export class StoreContainer extends PureComponent {
         isMobile: PropTypes.bool.isRequired, //by default
         isLoading: PropTypes.bool.isRequired, //by default
         updateBreadcrumbs: PropTypes.func.isRequired, // later add
+        storelocator_url: PropTypes.func.isRequired, // later add
         updateMeta: PropTypes.func.isRequired, google_map_api_key: PropTypes.string,
     };
 
     state = {
-        items: [], allStores: [], // showstoreinfo: false, selectedstore: "",
-
+        items: [], allStores: [], term: "", isLoaded: false, error: null
     };
 
-    // containerFunctions = {
-    //     handleCategoryTabButtonClick: this.handleCategoryTabButtonClick.bind(this),
-    //     handleStoreButtonClick: this.handleStoreButtonClick.bind(this), // Open drawer store
-    //     handleClosedButtonClick: this.handleClosedButtonClick.bind(this), // close drawer store
-    // };
+    containerFunctions = {
+        handleinputfiled: this.handleinputfiled.bind(this), //handle the input setstate
+    };
+
 
     // add on
     componentDidMount() {
-        // request the hole store through the api
+        // request the hole store data through the graphql_api
         const {requestStores} = this.props;
         requestStores();
     }
-
-
 
     // _updateBreadcrumbs = () => {
     //     const { updateBreadcrumbs, store_locator_url } = this.props;
@@ -102,58 +99,36 @@ export class StoreContainer extends PureComponent {
     //
     // }
 
-
-    // handleCategoryTabButtonClick(stores, storename) {
-    //     this.setState({selectedstore: storename});
-    //     this.setState({filteredStores: stores});
-    // }
-
-    // Open drawer store
-    // handleStoreButtonClick() {
-    //     this.setState({showstoreinfo: true});
-    //     setTimeout(() => {
-    //         document.getElementsByClassName("store-tooltip").style.left = 0;
-    //     }, 100);
-    //
-    //
-    // }
-
-    //closed drawer store
-    // handleClosedButtonClick() {
-    //     document.getElementById("stores__tooltip").style.left = "-300px";
-    //     setTimeout(() => {
-    //         this.setState({showstoreinfo: false});
-    //     }, 500);
-    // }
+    handleinputfiled(e){
+        this.setState({term : e.target.value.toLowerCase()})
+    }
 
     containerProps() {
         const {
             isLoading,
             isMobile,
             google_map_api_key,
-            store_locator_url,
             map_markericon,
             map_selected_markericon,
             device,
             updateBreadcrumbs
         } = this.props;
 
-        const {items, showstoreinfo, selectedstore, allStores} = this.state;
+        const {items, allStores , term , isLoaded , error} = this.state;
 
         return {
             isMobile,
             isLoading,
             updateBreadcrumbs,
             google_map_api_key,
-            store_locator_url,
             map_markericon,
             map_selected_markericon,
             device,
             items,
-            showstoreinfo, //close drawer state
-            selectedstore, //check the icon in category
-            // stateKey, // google_map_api_key_state
-            allStores, //All Stores
+            term ,
+            isLoaded ,
+            error,
+            allStores,
         };
     }
 

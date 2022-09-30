@@ -5,8 +5,6 @@ import {connect} from "react-redux";
 /** @namespace Component/StoreLocatorMap/Container/mapStateToProps */
 export const mapStateToProps = (state) => ({
     items: state.StoreLocatorReducer.items,
-
-    // add on
     google_api_key: state.ConfigReducer.google_api_key,
     map_zoom: state.ConfigReducer.map_zoom,
     map_style: state.ConfigReducer.map_style,
@@ -23,18 +21,18 @@ export const mapDispatchToProps = (dispatch) => ({
 
 /** @namespace Component/StoreLocatorMap/Container */
 export class StoreLocatorMapContainer extends PureComponent {
+
     containerProps() {
         const {
-            items, showstoreinfo,handleStoreButtonClick, handleClosedButtonClick,
-        } = this.props;
+            items, showstoreinfo, handleStoreButtonClick, handleClosedButtonClick, term, isLoaded, error , handleinputfiled} = this.props;
 
         return {
-            items,
-            showstoreinfo,
-            handleStoreButtonClick,
-            handleClosedButtonClick, // google_map_api_key,
+            items, showstoreinfo, handleStoreButtonClick, handleClosedButtonClick, // google_map_api_key,
+            // state
+            term, isLoaded, error  ,handleinputfiled
         };
     }
+
 
     render() {
         return <StoreLocatorMap {...this.containerProps()} />;
