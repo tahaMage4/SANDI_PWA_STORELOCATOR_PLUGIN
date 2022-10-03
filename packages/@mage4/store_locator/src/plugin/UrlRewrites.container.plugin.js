@@ -8,6 +8,9 @@ export class UrlRewritesContainerPlugin {
     };
 
     redirectToCorrectUrl(args, callback, instance) {
+        const {location, history} = instance.props;
+        const type = instance.getType();
+
         if ([TYPE_STORE_LOCATOR].includes(type)) {
             if (location.pathname.endsWith('/')) {
                 history.replace(location.pathname.slice(0, -1), history.state);
@@ -17,9 +20,13 @@ export class UrlRewritesContainerPlugin {
     }
 
     getTypeSpecificProps = (args, callback, instance) => {
-
         instance.redirectToCorrectUrl();
-        switch (this.getType()) {
+
+        const {urlRewrite: {url}} = instance.props;
+
+        const isLoading = instance.getIsLoading();
+
+        switch (instance.getType()) {
             case TYPE_STORE_LOCATOR:
                 if (isLoading) {
                     const StoreLocator = history?.state?.state?.store_locator_url;
@@ -31,8 +38,7 @@ export class UrlRewritesContainerPlugin {
                     return {};
                 }
 
-                return {Store_locator_Url: url};
-
+                return {Store_locator_Url: url}
         }
         return callback.apply(instance, args);
     }
@@ -46,7 +52,7 @@ const {redirectToCorrectUrl, getTypeSpecificProps} = new UrlRewritesContainerPlu
 export const config = {
     'Route/UrlRewrites/Container': {
         'member-function': {
-            redirectToCorrectUrl: redirectToCorrectUrl(), getTypeSpecificProps: getTypeSpecificProps()
+            redirectToCorrectUrl: redirectToCorrectUrl, getTypeSpecificProps: getTypeSpecificProps
         }
     }
 }
