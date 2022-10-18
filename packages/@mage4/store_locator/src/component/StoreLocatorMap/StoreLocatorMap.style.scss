@@ -4,7 +4,7 @@
   --map-background-color: #9a9a9a;
 }
 
-$font-source-sans-pro: 'Source Sans Pro', sans-serif;
+$font-source-sans-pro: "Source Sans Pro", sans-serif;
 
 body {
   counter-reset: list;
@@ -43,7 +43,6 @@ body {
       width: 100%;
     }
 
-
     & .sidebar_scroll {
       width: 100%;
       height: 432px;
@@ -59,13 +58,10 @@ body {
         background: transparent;
       }
 
-
       &::-webkit-scrollbar-thumb {
         //border-radius: 20px; /* roundness of the scroll thumb */
         //border: 3px solid transparent; /* creates padding around scroll thumb */
       }
-
-
     }
   }
 
@@ -125,16 +121,15 @@ body {
     text-transform: uppercase;
     font-family: $font-source-sans-pro;
     color: var(--map-text-color);
-
   }
 
   .shop-list__text {
     margin-top: 2px;
     font-size: 12px;
     line-height: 0;
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: "pnum" on, "lnum" on;
     color: var(--map-background-color);
     word-wrap: break-word;
   }
@@ -150,12 +145,10 @@ body {
       position: static;
     }
 
-
     @include mobile {
       margin-top: 0px !important;
       margin-bottom: 10px;
     }
-
 
     .store-tooltip.stores__tooltip.is-active {
       opacity: 1;
@@ -248,7 +241,6 @@ body {
         > div:last-child {
           width: 75%;
         }
-
       }
 
       //coustom
@@ -305,7 +297,6 @@ body {
       //  }
       //}
 
-
       //dropdown work
       select {
         -webkit-appearance: none;
@@ -314,7 +305,8 @@ body {
         appearance: none;
         outline: 0;
         background: var(--map-background-color);
-        background-image: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg") center center;
+        background-image: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg")
+          center center;
       }
 
       .select {
@@ -323,7 +315,7 @@ body {
         line-height: 3;
         background: #eeeeee;
         overflow: hidden;
-        border-radius: .25em;
+        border-radius: 0.25em;
         width: 13rem;
         height: 4rem;
         margin-left: 8rem;
@@ -332,7 +324,7 @@ body {
           width: 100%;
           height: 100%;
           margin: 0;
-          padding: 0 0 0 .5em;
+          padding: 0 0 0 0.5em;
           color: #fff;
           cursor: pointer;
         }
@@ -342,7 +334,7 @@ body {
         }
 
         &::after {
-          content: '\25BC';
+          content: "\25BC";
           position: absolute;
           top: 0;
           right: 0;
@@ -353,24 +345,21 @@ body {
         }
 
         &:hover::after {
-          color: #F39C12;
+          color: #f39c12;
         }
 
         //<!-- For different browsers -->
         &::after {
-          -webkit-transition: .25s all ease;
-          -o-transition: .25s all ease;
-          transition: .25s all ease;
+          -webkit-transition: 0.25s all ease;
+          -o-transition: 0.25s all ease;
+          transition: 0.25s all ease;
         }
-
       }
-
 
       .store-tooltip__text {
         font-size: 12px;
         color: var(--popup-text-color);
       }
-
 
       .store-tooltip__phone {
         margin-top: 20px;
@@ -381,12 +370,10 @@ body {
         color: var(--popup-text-color);
       }
 
-
       .store-tooltip__buttons {
         display: flex;
         justify-content: space-evenly;
       }
-
 
       .store-tooltip__button__div {
         cursor: pointer;
@@ -398,8 +385,6 @@ body {
         &:hover {
           background-color: lightblue;
         }
-
-
       }
 
       .store-tooltip__button__img {
@@ -447,7 +432,6 @@ body {
     }
   }
 
-
   //google-maps-react styling
   .gmnoprint {
     top: auto !important;
@@ -470,20 +454,17 @@ body {
     &::after {
       display: none;
     }
-
   }
 
   .gm-style .gm-style-iw-d {
     overflow-y: scroll !important;
   }
 
-
   .gm-style-iw {
     max-height: 432px;
   }
 
   //google-maps-react styling End
-
 
   //main
 }

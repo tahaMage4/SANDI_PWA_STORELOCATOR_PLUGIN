@@ -24,8 +24,12 @@ class StoreLocatorMap extends PureComponent {
   static defaultProps = {
     center: [38.000275, 23.733576],
     zoom: 12,
-    greatPlaceCoords: { lat: 59.9695413, lng: 30.382844 },
+    greatPlaceCoords: {
+      lat: 59.9695413,
+      lng: 30.382844,
+    },
   };
+
   // For allow the user location
   getLocation() {
     if (navigator.geolocation) {
@@ -44,10 +48,9 @@ class StoreLocatorMap extends PureComponent {
 
   // fly to the select store region
   flyTo(store) {
-    setTimeout(() => {
-      window.map.panTo(new google.maps.LatLng(store.lat, store.lng), location);
-      window.map.setZoom(12);
-    }, 1000);
+    window.map.panTo(new google.maps.LatLng(store.lat, store.lng), location);
+    window.map.setZoom(12);
+    window.scrollTo(0, 300);
   }
 
   onSubmitData = (e) => {
@@ -70,13 +73,18 @@ class StoreLocatorMap extends PureComponent {
       <>
         <h1 className="stores__title">{__("Store Locator")}</h1>
         <button onClick={this.getLocation}>
-          <p style={{ cursor: "pointer", color: "darkred" }}>
+          <p
+            style={{
+              cursor: "pointer",
+              color: "darkred",
+            }}
+          >
             {__("Get Current Location")}
           </p>
         </button>
         <div id="StoreLocatorMap" className="StoreLocatorMap">
-          {/*store left data*/}
-          <div className="Search__Items">
+          {/* store left data */}
+          <div>
             <div className="Search__Items">
               <form onSubmit={this.onSubmitData}>
                 <div>
@@ -161,7 +169,13 @@ class StoreLocatorMap extends PureComponent {
           {/*store right side */}
           <div className="stores__right">
             {/*map right side*/}
-            <div id="map" style={{ width: "100%", height: "100%" }}>
+            <div
+              id="map"
+              style={{
+                width: "100%",
+                height: "100%",
+              }}
+            >
               {items.length !== 0 ? (
                 <GoogleMapReact
                   bootstrapURLKeys={{
@@ -204,12 +218,12 @@ class StoreLocatorMap extends PureComponent {
                                          <span>
                                          <img class="store-tooltip__button__img" src="pinBigImageSelected" >
                                          </span>
-                                      
+
                                          </button>
                                          <span class="store-tooltip__button__text" > Direction </span>
                                          </a>
-                                         
-                                         
+
+
                                         <a href="http://maps.google.com/maps?z=12&t=m&q=loc:${
                                           stores.lat
                                         }+${stores.lng}" target="_blank">
@@ -228,14 +242,14 @@ class StoreLocatorMap extends PureComponent {
                                          <span class="store-tooltip__button__title">
                                          <img class="store-tooltip__button__img" src="pinBigImageSelected" >
                                          </span>
-                                         </button>                                         
-                                         <span class="store-tooltip__button__text"> Nearby </span> 
+                                         </button>
+                                         <span class="store-tooltip__button__text"> Nearby </span>
                                          </a>
                                          </div>
-                                         
-                                         
+
+
                                          <div class="store-tooltip__details">
-                                         
+
                                          <div class="store-tooltip__address">
                                          <div><img class="store-tooltip__button__img" src={pinBigImageSelected}></div>
                                          <div>
@@ -251,8 +265,8 @@ class StoreLocatorMap extends PureComponent {
                                          </div>
                                          </div>
                                          </div>
-                                       
-                                    
+
+
                                    <div class="select">
                                        <select name="slct" id="slct">
                                          <option>Open Hours</option>
