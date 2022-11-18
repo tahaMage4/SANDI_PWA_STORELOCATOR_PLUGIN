@@ -1,12 +1,9 @@
-
 import  { ProductListQuery as SourceProductListQuery }  from 'SourceQuery/ProductList.query';
-
 /**
  * Product List Query
  * @class ProductListQuery
  * @namespace Query/ProductList/Query */
 export class ProductListQuery extends  SourceProductListQuery {
-
     _getCartProductInterfaceFields() {
         return [
             'uid',
@@ -24,7 +21,6 @@ export class ProductListQuery extends  SourceProductListQuery {
             this._getProductLinksField()
         ];
     }
-
     _getCartProductField() {
         return new Field('product')
             .addFieldList([
@@ -37,7 +33,6 @@ export class ProductListQuery extends  SourceProductListQuery {
                 this._getAttributesField(true, true)
             ]);
     }
-
     _getProductInterfaceFields(isVariant, isForLinkedProducts = false, isForWishlist = false) {
         const {
             isPlp = false,
@@ -51,7 +46,6 @@ export class ProductListQuery extends  SourceProductListQuery {
         if (isForWishlist) {
             this.options.isForWishlist = true;
         }
-
         // Basic fields returned always
         const fields = [
             'uid',
@@ -64,7 +58,6 @@ export class ProductListQuery extends  SourceProductListQuery {
             this._getStockItemField(),
             this._getPriceRangeField()
         ];
-
         // Additional fields, which we want to return always, except when it's variants on PLP (due to hugh number of items)
         if (!(isPlp && isVariant) || isForWishlist) {
             fields.push(
@@ -75,15 +68,13 @@ export class ProductListQuery extends  SourceProductListQuery {
                 'special_from_date',
                 'special_to_date',
                 this._getTierPricesField()
-            );
+            )
         }
-
         // if it is normal product and we need attributes
         // or if, it is variant, but we need variant attributes or variants them-self
         if ((!isVariant && !noAttributes) || (isVariant && !noVariantAttributes && !noVariants)) {
             fields.push(this._getAttributesField(isVariant));
         }
-
         // to all products (non-variants)
         if (!isVariant) {
             fields.push(
@@ -93,7 +84,6 @@ export class ProductListQuery extends  SourceProductListQuery {
                 this._getRatingSummaryField(),
                 this._getCustomizableProductFragment()
             );
-
             // if variants are not needed
             if (!noVariants) {
                 fields.push(
@@ -103,12 +93,10 @@ export class ProductListQuery extends  SourceProductListQuery {
                 );
             }
         }
-
         // prevent linked products from looping
         if (isForLinkedProducts) {
             fields.push(this._getProductLinksField());
         }
-
         // additional information to PDP loads
         if (isSingleProduct) {
             fields.push(
@@ -117,7 +105,6 @@ export class ProductListQuery extends  SourceProductListQuery {
                 this._getMediaGalleryField(),
                 this._getSimpleProductFragment()
             );
-
             // for variants of PDP requested product
             if (!isVariant) {
                 fields.push(
@@ -133,11 +120,7 @@ export class ProductListQuery extends  SourceProductListQuery {
                 );
             }
         }
-
         return fields;
     }
-
-
 }
-
 export default new ProductListQuery();

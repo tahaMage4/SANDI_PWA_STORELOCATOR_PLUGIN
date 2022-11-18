@@ -23,6 +23,12 @@ body {
   font-family: $font-source-sans-pro;
 }
 
+.location{
+  cursor: pointer;
+  color: darkred;
+}
+
+
 .StoreLocatorMap {
   display: flex;
   gap: 20px;
@@ -243,60 +249,6 @@ body {
         }
       }
 
-      //coustom
-      //.dropdown {
-      //  padding-inline: 40px;
-      //
-      //  h5 {
-      //    &::before {
-      //      content: '';
-      //      display: inline-block;
-      //      padding-right: 10px;
-      //      background: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg") center center;
-      //      height: 18px;
-      //      width: 18px;
-      //      background-repeat: no-repeat;
-      //      background-size: cover;
-      //      position: relative;
-      //      top: 2px;
-      //      right: 4px;
-      //    }
-      //
-      //    &::after {
-      //      content: '>';
-      //      position: absolute;
-      //      //right: 25px;
-      //      left: 90px;
-      //      top: 8px;
-      //    }
-      //  }
-      //
-      //  .sub_menu {
-      //    max-height: 0;
-      //    overflow: hidden;
-      //    height: 100%;
-      //    transition: all 1s ease .3s;
-      //
-      //    li {
-      //      text-align: center;
-      //
-      //      &::before {
-      //        content: unset;
-      //      }
-      //    }
-      //  }
-      //
-      //  &:hover {
-      //    h5::after {
-      //      content: '<'
-      //    }
-      //
-      //    .sub_menu {
-      //      max-height: 200px;
-      //    }
-      //  }
-      //}
-
       //dropdown work
       select {
         -webkit-appearance: none;
@@ -305,8 +257,7 @@ body {
         appearance: none;
         outline: 0;
         background: var(--map-background-color);
-        background-image: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg")
-          center center;
+        background-image: url("https://png.pngtree.com/png-clipart/20191120/original/pngtree-outline-image-icon-isolated-png-image_5045508.jpg"),center center;
       }
 
       .select {

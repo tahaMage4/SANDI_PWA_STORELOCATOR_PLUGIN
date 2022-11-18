@@ -1,16 +1,4 @@
-/**
- * ScandiPWA - Progressive Web App for Magento
- *
- * Copyright © Scandiweb, Inc. All rights reserved.
- * See LICENSE for license details.
- *
- * @license OSL-3.0 (Open Software License ("OSL") v. 3.0)
- * @package scandipwa/base-theme
- * @link https://github.com/scandipwa/base-theme
- */
-
 import { ConfigQuery as SourceConfigQuery } from "SourceQuery/Config.query";
-
 /** @namespace Query/Config/Query */
 export class ConfigQuery extends SourceConfigQuery {
   _getTimeDateFormatFields() {
@@ -21,7 +9,6 @@ export class ConfigQuery extends SourceConfigQuery {
       // "time_format"
     ];
   }
-
   _getStoreConfigFields() {
     return [
       "code",
