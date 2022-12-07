@@ -10,25 +10,24 @@
  * @link https://github.com/scandipwa/base-theme
  */
 
-import {Field} from "Util/Query";
+import { Field } from 'Util/Query';
 
-/** @namespace Query/StoreLocator/Query */
+/** @namespace Mage4/Store_locator/Query/StoreLocator/Query */
 export class StoreLocatorQuery {
     //store ka kam
     getStores() {
-        return new Field("items").addFieldList(this.getStoresFields());
+        return new Field('items').addFieldList(this.getStoresFields());
     }
 
     getStoresFields() {
-        return ["name", "id", "lat", "lng", "image", "phone", "email", "description"];
+        return ['name', 'id', 'lat', 'lng', 'image', 'phone', 'email', 'description'];
     }
 
     //store End
 
-
     // main
     getQuery() {
-        return new Field("getMapStores").addFieldList(["total_count", this.getStores()]);
+        return new Field('getMapStores').addFieldList(['total_count', this.getStores()]);
     }
 
     // main End

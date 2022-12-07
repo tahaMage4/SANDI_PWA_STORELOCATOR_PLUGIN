@@ -76,123 +76,131 @@ export class StoreLocatorMapCompontent extends PureComponent {
             return <h1>loading....</h1>;
         }
 
-        return (<>
-                <h1 className="stores__title">{__('Store Locator')}</h1>
-                <button onClick={this.getLocation}>
+        return (
+            <>
+                <h1 className="stores__title">{ __('Store Locator') }</h1>
+                <button onClick={ this.getLocation }>
                     <p className="location">
-                        {__('Get Current Location')}
+                        { __('Get Current Location') }
                     </p>
                 </button>
                 <div id="StoreLocatorMap" className="StoreLocatorMap">
-                    { /* store left data */}
+                    { /* store left data */ }
                     <div>
                         <div className="Search__Items">
-                            <form onSubmit={this.onSubmitData}>
+                            <form onSubmit={ this.onSubmitData }>
                                 <div>
                                     <input
-                                        autoComplete="off"
-                                        type="text"
-                                        placeholder="search...."
-                                        onChange={handleinputfiled}
+                                      autoComplete="off"
+                                      type="text"
+                                      placeholder="search...."
+                                      onChange={ handleinputfiled }
                                     />
                                 </div>
-                                <div style={{ marginTop: '15px' }}>
+                                <div style={ { marginTop: '15px' } }>
                   <span>
-                    {term.length < 4 ? 'At least type 4 letter' : null}
+                    { term.length < 4 ? 'At least type 4 letter' : null }
                   </span>
                                 </div>
                             </form>
-                            { /* left side */}
+                            { /* left side */ }
                             <div className="sidebar_left">
                                 <div className="sidebar_scroll">
                                     <div className="shop-list stores__list">
                                         <ol className="shop-list__list hide-lg">
-                                            {items && items.map((store) => {
+                                            { items && items.map((store) => {
                                                 if (term !== '') {
                                                     if (store.name?.toLowerCase()
                                                         .includes(term) || store.description?.toLowerCase()
                                                         .includes(term)) {
-                                                        return (<div key={store.id}>
+                                                        return (
+<div key={ store.id }>
                                                                 <li
-                                                                    className="shop-list__shop"
-                                                                    onClick={() => {
-                                                                        this.flyTo(store);
-                                                                    }}
+                                                                  className="shop-list__shop"
+                                                                  onClick={ () => {
+                                                                      this.flyTo(store);
+                                                                  } }
                                                                 >
                                                                     <div className="shop-list__content">
                                                                         <p className="shop-list__title">
-                                                                            {store.name}
+                                                                            { store.name }
                                                                         </p>
                                                                         <p className="shop-list__text">
-                                                                            {store.description}
+                                                                            { store.description }
                                                                         </p>
-                                                                        <div/>
+                                                                        <div />
                                                                     </div>
                                                                 </li>
-                                                            </div>);
+</div>
+                                                        );
                                                     }
+
                                                     return null;
                                                 }
+
                                                 // hold the state of the stores
-                                                return (<div>
+                                                return (
+<div>
                                                         <li
-                                                            className="shop-list__shop"
-                                                            onClick={() => {
-                                                                this.flyTo(store);
-                                                            }}
+                                                          className="shop-list__shop"
+                                                          onClick={ () => {
+                                                              this.flyTo(store);
+                                                          } }
                                                         >
                                                             <div className="shop-list__content">
                                                                 <p className="shop-list__title">
-                                                                    {store.name}
+                                                                    { store.name }
                                                                 </p>
                                                                 <p className="shop-list__text">
-                                                                    {store.description}
+                                                                    { store.description }
                                                                 </p>
-                                                                <div/>
+                                                                <div />
                                                             </div>
                                                         </li>
-                                                    </div>);
-                                            })}
+</div>
+                                                );
+                                            }) }
                                         </ol>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        { /* left side End */}
+                        { /* left side End */ }
                     </div>
-                    { /* store right side */}
+                    { /* store right side */ }
                     <div className="stores__right">
-                        { /* map right side */}
+                        { /* map right side */ }
                         <div
-                            id="map"
-                            style={{
-                                width: '100%',
-                                height: '100%'
-                            }}
+                          id="map"
+                          style={ {
+                              width: '100%',
+                              height: '100%'
+                          } }
                         >
-                            {items.length !== 0 ? (<GoogleMapReact
-                                    bootstrapURLKeys={{
-                                        key: google_api_key || 'AIzaSyCqHWXniQhMZc7PBV-daLmW0q8T9Kceb10'
-                                    }}
-                                    center={this.props.center}
-                                    zoom={this.props.zoom}
-                                    options={MapOptions()}
-                                    onGoogleApiLoaded={({
-                                        map,
-                                        maps
-                                    }) => {
-                                        window.map = map;
-                                        items.map((stores) => {
-                                            const marker = new maps.Marker({
-                                                position: new maps.LatLng(stores.lat, stores.lng),
-                                                map,
-                                                icon: pinBigImageSelected,
-                                                animation: maps.Animation.BOUNCE
-                                            });
+                            { items.length !== 0 ? (
+                                <GoogleMapReact
+                                  bootstrapURLKeys={ {
+                                      key: google_api_key || 'AIzaSyCqHWXniQhMZc7PBV-daLmW0q8T9Kceb10'
+                                  } }
+                                  center={ this.props.center }
+                                  zoom={ this.props.zoom }
+                                  options={ MapOptions() }
+                                  onGoogleApiLoaded={ ({
+                                      map,
+                                      maps
+                                  }) => {
+                                      window.map = map;
+                                      items.map((stores) => {
+                                          const marker = new maps.Marker({
+                                              position: new maps.LatLng(stores.lat, stores.lng),
+                                              map,
+                                              icon: pinBigImageSelected,
+                                              animation: maps.Animation.BOUNCE
+                                          });
 
-                                            google.maps.event.addListener(marker, 'click', () => {
-                                                const infowindow = new google.maps.InfoWindow({
-                                                    content: `
+                                          google.maps.event.addListener(marker, 'click', () => {
+                                              const infowindow = new google.maps.InfoWindow({
+                                                  content: `
                                        <div class="store-tooltip__content">
                                         <img class="store__image" src=${media(stores.image, STORE_LOCATOR_MEDIA)} />
 
@@ -242,17 +250,19 @@ export class StoreLocatorMapCompontent extends PureComponent {
                                          </div>
                                         </div>
                                         `
-                                                });
+                                              });
 
-                                                infowindow.open(map, marker);
-                                            });
-                                        });
-                                    }}
-                                />) : null}
+                                              infowindow.open(map, marker);
+                                          });
+                                      });
+                                  } }
+                                />
+                            ) : null }
                         </div>
                     </div>
                 </div>
-            </>);
+            </>
+        );
     }
 }
 
