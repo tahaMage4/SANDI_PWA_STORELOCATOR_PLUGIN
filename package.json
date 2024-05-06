@@ -1,56 +1,56 @@
 {
-  "name": "scandiapp",
-  "version": "0.0.1",
-  "license": "OSL-3.0",
-  "dependencies": {
-    "@react-google-maps/api": "^2.12.2",
-    "@scandipwa/eslint-config": "0.1.40",
-    "@scandipwa/m2-theme": "^0.2.3",
-    "@scandipwa/scandipwa": "5.3.1",
-    "@scandipwa/scandipwa-scripts": "2.4.21",
-    "@tilework/mosaic": "0.1.7",
-    "@tilework/mosaic-craco": "0.0.5",
-    "google-map-react": "^2.2.0",
-    "leaflet": "^1.7.1",
-    "leaflet-rotate": "^0.1.4",
-    "leaflet-rotatedmarker": "^0.2.0",
-    "leaflet-routing-machine": "^3.2.12",
-    "postcss": "8.4.5",
-    "postinstall": "^0.7.4",
-    "react-leaflet": "2.7.0",
-    "scandipwa-cli": "^0.3.19",
-    "@mage4/store_locator": "file:packages/@mage4/store_locator"
-  },
-  "scandipwa": {
-    "type": "theme",
-    "extensions": {
-      "@mage4/store_locator": true
-    },
-    "locales": {
-      "en_US": true
-    },
-    "parentTheme": "@scandipwa/scandipwa"
-  },
-  "scripts": {
-    "start": "scandipwa-scripts start",
-    "build": "scandipwa-scripts build",
-    "postinstall": "scandipwa-scripts link",
-    "postupdate": "scandipwa-scripts link"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "eslintConfig": {
-    "extends": "@scandipwa"
-  },
-  "proxy": "http://magento.local/graphql"
+	"name": "scandiapp",
+	"version": "0.0.1",
+	"license": "OSL-3.0",
+	"dependencies": {
+		"@react-google-maps/api": "^2.12.2",
+		"@scandipwa/eslint-config": "0.1.40",
+		"@scandipwa/m2-theme": "^0.2.3",
+		"@scandipwa/scandipwa": "5.3.1",
+		"@scandipwa/scandipwa-scripts": "2.4.21",
+		"@tilework/mosaic": "0.1.7",
+		"@tilework/mosaic-craco": "0.0.5",
+		"google-map-react": "^2.2.0",
+		"leaflet": "^1.7.1",
+		"leaflet-rotate": "^0.1.4",
+		"leaflet-rotatedmarker": "^0.2.0",
+		"leaflet-routing-machine": "^3.2.12",
+		"postcss": "8.4.5",
+		"postinstall": "^0.7.4",
+		"react-leaflet": "2.7.0",
+		"scandipwa-cli": "^0.3.19",
+		"@mage4/store_locator": "file:packages/@mage4/store_locator"
+	},
+	"scandipwa": {
+		"type": "theme",
+		"extensions": {
+			"@mage4/store_locator": true
+		},
+		"locales": {
+			"en_US": true
+		},
+		"parentTheme": "@scandipwa/scandipwa"
+	},
+	"scripts": {
+		"start": "scandipwa-scripts start",
+		"build": "scandipwa-scripts build",
+		"postinstall": "scandipwa-scripts link",
+		"postupdate": "scandipwa-scripts link"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"eslintConfig": {
+		"extends": "@scandipwa"
+	},
+	"proxy": "http://55a72f6c73.nxcli.io/"
 }
