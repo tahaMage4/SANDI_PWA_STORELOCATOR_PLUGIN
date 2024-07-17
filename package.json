@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"license": "OSL-3.0",
 	"dependencies": {
-		"@react-google-maps/api": "^2.12.2",
+		"@react-google-maps/api": "^2.19.3",
 		"@scandipwa/eslint-config": "0.1.40",
 		"@scandipwa/m2-theme": "^0.2.3",
 		"@scandipwa/scandipwa": "5.3.1",
